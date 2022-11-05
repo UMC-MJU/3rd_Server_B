@@ -18,11 +18,15 @@ public class UploadPostReq {
     @NotNull
     private String content;
 
+    @Schema(type = "String", example = "jinpark99@naver.com", description = "이메일")
+    @NotBlank
+    private String email;
+
     @Schema(type = "Boolean", example = "true", description = "익명 여부")
     @NotNull
     private Boolean anonymous;
 
-    @Schema(type = "Array", example = "취미", description = "해쉬태그")
+    @Schema(type = "Array", example = "[오운완, 취미]", description = "해쉬태그")
     private List<String> hashtags;
 
 }

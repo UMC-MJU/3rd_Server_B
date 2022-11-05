@@ -35,12 +35,16 @@ public class MemberService {
 
         memberRepository.save(member);
 
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentContextPath().path("/api/users/{id}")
+                .buildAndExpand(member.getId()).toUri();
+
         ApiResponse apiResponse = ApiResponse.builder()
                 .check(true)
                 .information(Message.builder().message("회원가입에 성공했습니다.").build())
                 .build();
 
-        return ResponseEntity.ok().body(apiResponse);
+        return ResponseEntity.created(location).body(apiResponse);
 
     }
 

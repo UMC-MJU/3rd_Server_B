@@ -29,7 +29,7 @@ public class AuthController {
 
     @Operation(summary = "회원 가입", description = "회원 가입")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "회원 가입 성공", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = umc.week6.global.payload.ApiResponse.class))}),
+            @ApiResponse(responseCode = "201", description = "회원 가입 성공", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = umc.week6.global.payload.ApiResponse.class))}),
             @ApiResponse(responseCode = "400", description = "회원 가입 실패", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))})
     })
     @PostMapping("/signup")

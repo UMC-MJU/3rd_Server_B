@@ -40,11 +40,15 @@ public class Post extends BaseEntity {
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     private List<PostHashtag> postHashtags;
 
+
     @Builder
-    public Post(String title, String content, Boolean anonymous, Member member) {
+    public Post(String title, String content, Boolean anonymous, Member member, List<Comment> comments, List<PostHashtag> postHashtags) {
         this.title = title;
         this.content = content;
         this.anonymous = anonymous;
         this.member = member;
+        this.comments = comments;
+        this.postHashtags = postHashtags;
     }
+
 }
