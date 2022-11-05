@@ -1,33 +1,34 @@
-package umc.week6.domain.comment.domain;
+package umc.week6.domain.hashtag.domain;
 
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import umc.week6.domain.post.domain.Post;
-import umc.week6.domain.common.BaseEntity;
 
 import javax.persistence.*;
 
+@Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter
-public class Comment extends BaseEntity {
+public class PostHashtag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
     private Post post;
 
-    @Column(nullable = false)
-    private String content;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "hashtag_id")
+    private Hashtag hashtag;
 
     @Builder
-    public Comment(String content) {
-        this.content = content;
+    public PostHashtag(Post post, Hashtag hashtag) {
+        this.post = post;
+        this.hashtag = hashtag;
     }
 
 }

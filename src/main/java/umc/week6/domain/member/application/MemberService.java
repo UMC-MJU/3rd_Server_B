@@ -1,6 +1,7 @@
 package umc.week6.domain.member.application;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,8 +23,9 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
+    @Transactional
     public ResponseEntity<?> signUp(SignUpReq signUpReq) {
-        DefaultAssert.isTrue(memberRepository.findByEmail(signUpReq.getEmail()).isEmpty());
+        DefaultAssert.isTrue(memberRepository.findByEmail(signUpReq.getEmail()).isEmpty(), "이미 존재하는 이메일 입니다.");
 
         Member member = Member.builder()
                 .email(signUpReq.getEmail())
@@ -33,16 +35,12 @@ public class MemberService {
 
         memberRepository.save(member);
 
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentContextPath().path("/auth/")
-                .buildAndExpand(member.getId()).toUri();
-
         ApiResponse apiResponse = ApiResponse.builder()
                 .check(true)
                 .information(Message.builder().message("회원가입에 성공했습니다.").build())
                 .build();
 
-        return ResponseEntity.created(location).body(apiResponse);
+        return ResponseEntity.ok().body(apiResponse);
 
     }
 

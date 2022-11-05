@@ -1,4 +1,4 @@
-package umc.week6.domain.board.domain;
+package umc.week6.domain.post.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

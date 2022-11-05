@@ -25,7 +25,9 @@ dependencies {
 
     annotationProcessor 'org.projectlombok:lombok'
     compileOnly 'org.projectlombok:lombok'
+
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+    runtimeOnly 'com.h2database:h2'
 
     //swagger
     implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.12'

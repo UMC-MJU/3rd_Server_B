@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import umc.week6.domain.member.application.MemberService;
-import umc.week6.domain.member.domain.Member;
 import umc.week6.domain.member.dto.SignUpReq;
 import umc.week6.global.error.dto.ErrorResponse;
 
@@ -30,7 +29,7 @@ public class AuthController {
 
     @Operation(summary = "회원 가입", description = "회원 가입")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "회원 가입 성공", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = Member.class))}),
+            @ApiResponse(responseCode = "200", description = "회원 가입 성공", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = umc.week6.global.payload.ApiResponse.class))}),
             @ApiResponse(responseCode = "400", description = "회원 가입 실패", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))})
     })
     @PostMapping("/signup")
