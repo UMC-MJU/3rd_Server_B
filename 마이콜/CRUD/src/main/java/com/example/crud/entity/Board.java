@@ -17,6 +17,7 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Board {
+    //Board Entity 요소, index값, 작성자, 제목, 내용
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

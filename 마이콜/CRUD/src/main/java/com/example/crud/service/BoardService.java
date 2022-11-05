@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class BoardService {
     private final BoardRepository boardRepository;
-
+    //게시글 전체 조회
     @Transactional(readOnly = true)
     public List<Board> getBoards() {
         List<Board> boards = boardRepository.findAll();
