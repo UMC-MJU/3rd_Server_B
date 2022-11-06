@@ -15,6 +15,13 @@ public class Hashtags {
         this.value = value;
     }
 
+    public static Hashtags of(List<PostHashtag> postHashtags) {
+        List<Hashtag> hashtags = postHashtags.stream()
+                .map(PostHashtag::getHashtag)
+                .collect(Collectors.toList());
+        return new Hashtags(hashtags);
+    }
+
     public List<PostHashtag> getPostHashtags(Post post) {
         return value.stream()
                 .map(hashtag -> PostHashtag.builder().post(post).hashtag(hashtag).build())

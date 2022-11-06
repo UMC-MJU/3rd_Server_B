@@ -9,11 +9,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import umc.week6.domain.post.application.PostService;
+import umc.week6.domain.post.dto.UpdatePostReq;
 import umc.week6.domain.post.dto.UploadPostReq;
 import umc.week6.global.error.dto.ErrorResponse;
 
@@ -38,4 +36,31 @@ public class PostController {
             ) {
         return postService.uploadPost(uploadPostReq);
     }
+
+    @Operation(summary = "게시글 조회", description = "게시글 조회")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "게시글 조회 성공", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = umc.week6.global.payload.ApiResponse.class))}),
+            @ApiResponse(responseCode = "400", description = "게시글 조회 실패", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))})
+    })
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getPost(
+            @PathVariable Long id
+    ) {
+        return postService.getPost(id);
+    }
+
+    @Operation(summary = "게시글 수정", description = "게시글 수정")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "게시글 수정 성공", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = umc.week6.global.payload.ApiResponse.class))}),
+            @ApiResponse(responseCode = "400", description = "게시글 수정 실패", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))})
+    })
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> updatePost(
+            @Parameter(description = "UpdatePostReq", required = true)@Valid @RequestBody UpdatePostReq updatePostReq,
+            @PathVariable Long id
+            ) {
+        return postService.updatePost(updatePostReq, id);
+    }
+
+
 }

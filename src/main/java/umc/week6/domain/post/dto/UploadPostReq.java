@@ -24,7 +24,7 @@ public class UploadPostReq {
 
     @Schema(type = "Boolean", example = "true", description = "익명 여부")
     @NotNull
-    private Boolean anonymous;
+    private boolean anonymous;
 
     @Schema(type = "Array", example = "[오운완, 취미]", description = "해쉬태그")
     private List<String> hashtags;

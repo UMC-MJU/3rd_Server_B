@@ -28,7 +28,7 @@ public class Post extends BaseEntity {
     @Column(nullable = false)
     private String content;
 
-    private Boolean anonymous;
+    private boolean anonymous;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
@@ -42,13 +42,25 @@ public class Post extends BaseEntity {
 
 
     @Builder
-    public Post(String title, String content, Boolean anonymous, Member member, List<Comment> comments, List<PostHashtag> postHashtags) {
+    public Post(String title, String content, boolean anonymous, Member member, List<Comment> comments, List<PostHashtag> postHashtags) {
         this.title = title;
         this.content = content;
         this.anonymous = anonymous;
         this.member = member;
         this.comments = comments;
         this.postHashtags = postHashtags;
+    }
+
+    public void updateTitle(String title) {
+        this.title = title;
+    }
+
+    public void updateContent(String content) {
+        this.content = content;
+    }
+
+    public void updateAnonymous(boolean anonymous) {
+        this.anonymous = anonymous;
     }
 
 }

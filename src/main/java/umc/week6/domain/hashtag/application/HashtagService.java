@@ -28,10 +28,26 @@ public class HashtagService {
         postHashtagRepository.saveAll(hashtags.getPostHashtags(savedPost));
     }
 
+    public Hashtags findHashtagsByPost(Post post) {
+        return Hashtags.of(postHashtagRepository.findAllByPost(post));
+    }
+
+    public void deleteAllByPost(Hashtags hashtags, Post post) {
+        postHashtagRepository.deleteAllByPost(post);
+        deleteNoUsedHashtags(hashtags);
+    }
+
     private Hashtag findOrSave(String name) {
         return hashtagRepository
                 .findByName(name)
                 .orElseGet(() -> hashtagRepository.save(Hashtag.builder().name(name).build()));
     }
 
+    private void deleteNoUsedHashtags(Hashtags hashtags) {
+        for (Hashtag hashtag : hashtags.getValue()) {
+            if (!postHashtagRepository.existsByHashtagId(hashtag.getId())) {
+                hashtagRepository.delete(hashtag);
+            }
+        }
+    }
 }
