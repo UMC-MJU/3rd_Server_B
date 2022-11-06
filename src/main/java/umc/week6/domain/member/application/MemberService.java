@@ -14,6 +14,7 @@ import umc.week6.global.payload.ApiResponse;
 import umc.week6.global.payload.Message;
 
 import java.net.URI;
+import java.util.Optional;
 
 
 @Service
@@ -46,6 +47,12 @@ public class MemberService {
 
         return ResponseEntity.created(location).body(apiResponse);
 
+    }
+
+    public Member findMemberByEmail(String email) {
+        Optional<Member> member = memberRepository.findByEmail(email);
+        DefaultAssert.isTrue(member.isPresent(), "존재하지 않는 이메일입니다.");
+        return member.get();
     }
 
 }

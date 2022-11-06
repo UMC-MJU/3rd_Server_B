@@ -11,7 +11,7 @@ import java.util.List;
 public class UploadPostReq {
 
     @Schema(type = "String", example = "게시글 제목", description = "제목")
-    @NotBlank
+    @NotNull
     private String title;
 
     @Schema(type = "String", example = "게시글 내용", description = "내용")
@@ -23,7 +23,6 @@ public class UploadPostReq {
     private String email;
 
     @Schema(type = "Boolean", example = "true", description = "익명 여부")
-    @NotNull
     private boolean anonymous;
 
     @Schema(type = "Array", example = "[오운완, 취미]", description = "해쉬태그")

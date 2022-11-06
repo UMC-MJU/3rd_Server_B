@@ -5,9 +5,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import umc.week6.domain.comment.application.CommentService;
+import umc.week6.domain.comment.domain.Comment;
+import umc.week6.domain.comment.domain.CommentRepository;
 import umc.week6.domain.hashtag.application.HashtagService;
 import umc.week6.domain.hashtag.domain.Hashtag;
 import umc.week6.domain.hashtag.domain.Hashtags;
+import umc.week6.domain.member.application.MemberService;
 import umc.week6.domain.member.domain.Member;
 import umc.week6.domain.member.domain.MemberRepository;
 import umc.week6.domain.post.domain.Post;
@@ -20,6 +24,7 @@ import umc.week6.global.payload.ApiResponse;
 import umc.week6.global.payload.Message;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -29,13 +34,15 @@ import java.util.stream.Collectors;
 public class PostService {
 
     private final PostRepository postRepository;
-    private final MemberRepository memberRepository;
+    private final CommentRepository commentRepository;
 
     private final HashtagService hashtagService;
+    private final MemberService memberService;
+    private final CommentService commentService;
 
     @Transactional
     public ResponseEntity<?> uploadPost(UploadPostReq uploadPostReq) {
-        Member member = findMemberByEmail(uploadPostReq.getEmail());
+        Member member = memberService.findMemberByEmail(uploadPostReq.getEmail());
 
         Post post = Post.builder()
                 .title(uploadPostReq.getTitle())
@@ -57,6 +64,7 @@ public class PostService {
     public ResponseEntity<?> getPost(Long id) {
         Post post = findPostById(id);
         Hashtags hashtags = hashtagService.findHashtagsByPost(post);
+        List<Comment> comments = commentRepository.findAllByPostId(post.getId());
 
         ApiResponse apiResponse = ApiResponse.builder()
                 .check(true)
@@ -64,6 +72,7 @@ public class PostService {
                         .title(post.getTitle())
                         .content(post.getContent())
                         .anonymous(post.isAnonymous())
+                        .comments(commentService.findComments(post.getId()))
                         .hashtags(hashtags.getValue().stream()
                                 .map(Hashtag::getName)
                                 .collect(Collectors.toList()))
@@ -91,16 +100,10 @@ public class PostService {
         return voidResponse("게시글이 수정되었습니다.", location);
     }
 
-    private Post findPostById(Long postId) {
+    public Post findPostById(Long postId) {
         Optional<Post> post = postRepository.findById(postId);
         DefaultAssert.isTrue(post.isPresent(), "게시글이 존재하지 않습니다");
         return post.get();
-    }
-
-    private Member findMemberByEmail(String email) {
-        Optional<Member> member = memberRepository.findByEmail(email);
-        DefaultAssert.isTrue(member.isPresent(), "존재하지 않는 이메일입니다.");
-        return member.get();
     }
 
     private ResponseEntity<?> voidResponse(String message, URI uri) {
