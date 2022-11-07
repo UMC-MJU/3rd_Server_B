@@ -1,6 +1,5 @@
 package com.umc.board_practice.service;
 
-import com.umc.board_practice.domain.Post;
 import com.umc.board_practice.domain.User;
 import com.umc.board_practice.dto.UserDto;
 import com.umc.board_practice.repository.UserRepository;
@@ -36,8 +35,8 @@ public class UserService {
     }
 
     public List<UserDto> findAllUser() {
-        List<User> users = userRepository.findAll();
-        return users.stream()
+        List<User> findUsers = userRepository.findAll();
+        return findUsers.stream()
                 .map(User::toUserDto)
                 .collect(Collectors.toList());
     }

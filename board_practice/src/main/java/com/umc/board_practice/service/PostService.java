@@ -20,9 +20,9 @@ public class PostService {
     private final UserRepository userRepository;
 
     @Transactional
-    public PostDto posting(PostDto postDto, String userName) {
-        User user = userRepository.findByName(userName);
-        Post newPost = Post.createPost(postDto, user);
+    public PostDto posting (PostDto postDto, String name) {
+        User findUser = userRepository.findByName(name);
+        Post newPost = Post.createPost(postDto, findUser);
         Post savedPost = postRepository.save(newPost);
         return PostDto.builder()
                 .content(savedPost.getContent())
@@ -31,7 +31,7 @@ public class PostService {
                 .build();
     }
 
-    public PostDto findPostByTitle(String title) {
+    public PostDto findPostByTitle (String title) {
         Post findPost = postRepository.findByTitle(title);
         return PostDto.builder()
                 .content(findPost.getContent())
@@ -40,16 +40,16 @@ public class PostService {
                 .build();
     }
 
-    public List<PostDto> findPostByUserName(String userName) {
-        List<Post> findPost = postRepository.findAllByUserName(userName);
-        return findPost.stream()
+    public List<PostDto> findPostByUserName (String name) {
+        List<Post> findPosts = postRepository.findAllByUserName(name);
+        return findPosts.stream()
                 .map(Post::toPostDto)
                 .collect(Collectors.toList());
     }
 
     public List<PostDto> findAllPost() {
-        List<Post> posts = postRepository.findAll();
-        return posts.stream()
+        List<Post> findPosts = postRepository.findAll();
+        return findPosts.stream()
                 .map(Post::toPostDto)
                 .collect(Collectors.toList());
     }
@@ -68,10 +68,10 @@ public class PostService {
 
     @Transactional
     public void deletePostByPasswordAndTitle(String password, String title) {
-        User user = userRepository.findByPassword(password);
+        User findUser = userRepository.findByPassword(password);
         Post findPost = postRepository.findByTitle(title);
 
-        if (findPost.getUser().getName().equals(user.getName())) {
+        if (findPost.getUser().getName().equals(findUser.getName())) {
             postRepository.delete(findPost);
         } else {
             throw new IllegalStateException("권한이 없거나, 게시물의 제목을 확인해주세요");
