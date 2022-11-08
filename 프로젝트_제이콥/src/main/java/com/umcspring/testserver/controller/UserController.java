@@ -32,6 +32,11 @@ public class UserController {
         return userService.getUserById(id);
     }
 
+    //회원 정보 수정
+    @PutMapping("/{id}")
+    public void updateUserPw(@PathVariable String id, UserDto user){
+        userService.updateUserPw(id, user);
+    }
     //회원 탈퇴
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable String id){

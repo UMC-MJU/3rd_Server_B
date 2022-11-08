@@ -9,6 +9,7 @@ import java.util.List;
 @Repository
 public class UserRepository {
 
+    //원래는 db연결 필요
     static public ArrayList<UserDto> users;
 
     static{
@@ -36,6 +37,14 @@ public class UserRepository {
                 .orElse(new UserDto(0, "", "", "", ""));
     }
 
+    //유저 비밀번호 수정
+    public void updateUserPw(String id, UserDto user){
+        users.stream()
+                .filter(userDto -> userDto.getId().equals(id))
+                .findAny()
+                .orElse(new UserDto(0,"","","",""))
+                .setPassword(user.getPassword());
+    }
     //회원 탈퇴
     public void deleteUser(String id){
         users.removeIf(userDto -> userDto.getId().equals(id));
