@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b086fca2-f612-4308-8d24-319db218a659" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/Week6Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/comment/application/CommentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/comment/domain/Comment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/comment/domain/CommentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/comment/dto/AddCommentReq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/comment/dto/CommentRes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/common/BaseEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/common/Status.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/hashtag/application/HashtagService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/hashtag/domain/Hashtag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/hashtag/domain/Hashtags.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/hashtag/domain/PostHashtag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/hashtag/domain/repository/HashtagRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/hashtag/domain/repository/PostHashtagRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/member/application/MemberService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/member/domain/Member.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/member/domain/MemberRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/member/dto/SignUpReq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/post/application/PostService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/post/domain/Post.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/post/domain/PostRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/post/dto/PostDetailRes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/post/dto/UpdatePostReq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/domain/post/dto/UploadPostReq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/global/DefaultAssert.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/global/config/JpaConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/global/error/ApiControllerAdvice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/global/error/DefaultException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/global/error/DefaultNullPointerException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/global/error/InvalidParameterException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/global/error/dto/ErrorCode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/global/error/dto/ErrorResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/global/payload/ApiResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/global/payload/Message.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/presentation/AuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/presentation/CommentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/week6/presentation/PostController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/umc/week6/Week6ApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2HKdv0LM1xqWFKQhmurxBsOLUBj" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/jinpa/jin/Server_B/프로젝트_지니/JdbcTemplate",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "spring.configuration.checksum": "3a0b98a619512c0081cc89605255559a"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Week6Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Week6.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="umc.week6.Week6Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b086fca2-f612-4308-8d24-319db218a659" name="Changes" comment="" />
+      <created>1668037936081</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1668037936081</updated>
+      <workItem from="1668037937329" duration="2085000" />
+      <workItem from="1668184274258" duration="80000" />
+      <workItem from="1668257115679" duration="194000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
