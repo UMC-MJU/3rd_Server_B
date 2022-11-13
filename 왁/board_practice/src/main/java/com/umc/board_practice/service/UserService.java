@@ -7,16 +7,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class UserService {
 
     private final UserRepository userRepository;
 
-    @Transactional
     public UserDto signUp(UserDto userDto) {
         User newUser = User.createUser(userDto);
         User savedUser = userRepository.save(newUser);
@@ -26,28 +23,12 @@ public class UserService {
                 .build();
     }
 
-    public UserDto findUserByPassword(String password) {
-        User findUser = userRepository.findByPassword(password);
-        return UserDto.builder()
-                .name(findUser.getName())
-                .password(findUser.getPassword())
-                .build();
-    }
 
-    public List<UserDto> findAllUser() {
-        List<User> findUsers = userRepository.findAll();
-        return findUsers.stream()
-                .map(User::toUserDto)
-                .collect(Collectors.toList());
-    }
-
-    @Transactional
     public void deleteUserByPassword(String password) {
         User findUser = userRepository.findByPassword(password);
         userRepository.delete(findUser);
     }
 
-    @Transactional
     public UserDto updateUserByPassword(String password, UserDto userDto) {
         User findUser = userRepository.findByPassword(password);
         findUser.setPassword(userDto.getPassword());

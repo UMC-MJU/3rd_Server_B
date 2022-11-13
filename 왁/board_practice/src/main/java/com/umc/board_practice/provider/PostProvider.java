@@ -5,12 +5,14 @@ import com.umc.board_practice.dto.PostDto;
 import com.umc.board_practice.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class PostProvider {
 
     private final PostRepository postRepository;
