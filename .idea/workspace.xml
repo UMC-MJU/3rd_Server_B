@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="746965d5-5e02-4093-9b9f-69b78558db4f" name="Changes" comment="first commit">
+    <list default="true" id="746965d5-5e02-4093-9b9f-69b78558db4f" name="Changes" comment="[CHORE]db정보 제거 (gitignore 추가)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chan/Server_B--/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/chan/Server_B--/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +66,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "11",
-    "last_opened_file_path": "C:/Users/blues/Desktop/3-2/UMC3기/chan",
+    "last_opened_file_path": "C:/Users/blues/Desktop/3-2/UMC3기/chan/chan",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
@@ -134,7 +133,10 @@
       <workItem from="1667722504172" duration="1075000" />
       <workItem from="1667738400622" duration="487000" />
       <workItem from="1667741058268" duration="189000" />
-      <workItem from="1667812587945" duration="314000" />
+      <workItem from="1667812587945" duration="867000" />
+      <workItem from="1667815885487" duration="21000" />
+      <workItem from="1668322932110" duration="25000" />
+      <workItem from="1668349288865" duration="10000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1667738456542</created>
@@ -143,7 +145,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667738456542</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="[CHORE]db정보 제거 (gitignore 추가)">
+      <created>1667813186853</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667813186853</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,6 +180,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+    <MESSAGE value="[CHORE]db정보 제거 (gitignore 추가)" />
+    <option name="LAST_COMMIT_MESSAGE" value="[CHORE]db정보 제거 (gitignore 추가)" />
   </component>
 </project>

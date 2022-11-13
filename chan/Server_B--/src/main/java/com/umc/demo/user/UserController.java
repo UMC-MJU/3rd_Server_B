@@ -4,6 +4,7 @@ import com.umc.demo.user.dto.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,7 +29,8 @@ public class UserController {
 
     // 사용자 등록
     @PostMapping()
-    public User getPosts(@RequestBody UserDto userDto) {
+    // 넘어오는 dto를 valid로 유효성 체크
+    public User getPosts(@Valid @RequestBody UserDto userDto) {
         return userService.saveUser(userDto);
     }
 }
