@@ -1,6 +1,7 @@
 package com.umc.board_practice.controller;
 
 import com.umc.board_practice.dto.UserDto;
+import com.umc.board_practice.provider.UserProvider;
 import com.umc.board_practice.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final UserProvider userProvider;
 
     @PostMapping("/board/user/signup")
     public UserDto signUp(@RequestBody UserDto userDto) {
@@ -20,12 +22,12 @@ public class UserController {
 
     @GetMapping("/board/user/{password}")
     public UserDto findUserByPassword(@PathVariable String password) {
-        return userService.findUserByPassword(password);
+        return userProvider.findUserByPassword(password);
     }
 
     @GetMapping("/board/user")
     public List<UserDto> findAllUser() {
-        return userService.findAllUser();
+        return userProvider.findAllUser();
     }
 
     @PostMapping("/board/user/update/{password}")

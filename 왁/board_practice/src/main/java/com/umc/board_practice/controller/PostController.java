@@ -1,6 +1,7 @@
 package com.umc.board_practice.controller;
 
 import com.umc.board_practice.dto.PostDto;
+import com.umc.board_practice.provider.PostProvider;
 import com.umc.board_practice.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -12,20 +13,21 @@ import java.util.List;
 public class PostController {
 
     private final PostService postService;
+    private final PostProvider postProvider;
 
     @GetMapping("/board/post/title")
     public PostDto findPostByTitle(@RequestParam(name = "t") String title) {
-        return postService.findPostByTitle(title);
+        return postProvider.findPostByTitle(title);
     }
 
     @GetMapping("/board/post/name")
     public List<PostDto> findPostByUserName(@RequestParam(name = "n") String name) {
-        return postService.findPostByUserName(name);
+        return postProvider.findPostByUserName(name);
     }
 
     @GetMapping("/board/post")
     public List<PostDto> findAllPost() {
-        return postService.findAllPost();
+        return postProvider.findAllPost();
     }
 
     @PostMapping("/board/post/posting/{name}")
