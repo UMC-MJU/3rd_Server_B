@@ -29,9 +29,9 @@ public class UserController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/users/{id}")
-    public User findUser(@PathVariable("id") Integer id) {
-        User user = userService.findUser(id);
+    @GetMapping("/users/{userId}")
+    public User findUser(@PathVariable("userId") Integer userId) {
+        User user = userService.findUser(userId);
         return user;
     }
 
