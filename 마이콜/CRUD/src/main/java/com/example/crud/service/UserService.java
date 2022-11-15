@@ -2,6 +2,7 @@ package com.example.crud.service;
 
 import com.example.crud.dto.RegisterDto;
 import com.example.crud.entity.User;
+import com.example.crud.exception.UserNotFoundException;
 import com.example.crud.repository.UserRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -26,9 +27,7 @@ public class UserService {
     }
 
     public User findUser(int id) {
-        return userRepository.findById(id).orElseThrow(()-> {
-            return new IllegalArgumentException("찾을 ID를 다시 입력해주세요.");
-        });
+        return userRepository.findById(id).orElseThrow(UserNotFoundException::new);
     }
 }
 
