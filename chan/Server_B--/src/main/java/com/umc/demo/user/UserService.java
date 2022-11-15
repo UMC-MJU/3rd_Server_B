@@ -30,6 +30,7 @@ public class UserService {
 
     public User saveUser(UserDto userDto) {
         User user = User.builder()
+                .email(userDto.getEmail())
                 .password(userDto.getPassword())
                 .name(userDto.getName())
                 .profile_img(userDto.getProfile_img())
