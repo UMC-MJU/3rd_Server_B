@@ -3,6 +3,8 @@ package umc.week6.domain.member.application;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import umc.week6.domain.member.domain.Member;
 import umc.week6.domain.member.domain.MemberDao;
 import umc.week6.domain.member.dto.GetMemberRes;
 import umc.week6.global.DefaultAssert;
@@ -13,16 +15,17 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class MemberService {
 
     private final MemberDao memberDao;
 
     public ResponseEntity<?> getMember(Long id) {
-        GetMemberRes getMemberRes = memberDao.findMemberById(id);
-        DefaultAssert.isObjectNull(getMemberRes);
+        Member member = memberDao.findMemberById(id);
+        DefaultAssert.isObjectNull(member);
         return ResponseEntity.ok().body(ApiResponse.builder()
                 .check(true)
-                .information(getMemberRes)
+                .information(member)
                 .build());
     }
 

@@ -37,17 +37,28 @@ public class MemberDao {
         return this.jdbcTemplate.queryForObject(findEmailQuery, boolean.class, findEmailParams);
     }
 
-    public GetMemberRes findMemberById(Long id) {
+    public Member findMemberById(Long id) {
         String query = "SELECT * FROM member WHERE member.id = ?";
         Long params = id;
-        GetMemberRes getMemberRes = this.jdbcTemplate.queryForObject(query,
-                (rs, rowNum) -> new GetMemberRes(
+        return this.jdbcTemplate.queryForObject(query,
+                (rs, rowNum) -> new Member(
                         rs.getLong("id"),
                         rs.getString("email"),
+                        rs.getString("passworc"),
                         rs.getString("nickname")),
                 params);
-        DefaultAssert.isObjectNull(getMemberRes);
-        return getMemberRes;
+    }
+
+    public Member findMemberByEmail(String email) {
+        String query = "SELECT * FROM member WHERE member.email = ?";
+        Object[] params = new Object[]{email};
+        return this.jdbcTemplate.queryForObject(query,
+                (rs, rowNum) -> new Member(
+                        rs.getLong("id"),
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getString("nickname")),
+                params);
     }
 
     public List<GetMemberRes> findMembers() {

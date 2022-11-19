@@ -10,10 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import umc.week6.domain.member.application.AuthService;
 import umc.week6.domain.member.dto.GetMemberRes;
 import umc.week6.domain.member.dto.SignInReq;
@@ -25,7 +22,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 public class AuthController {
 
     final Logger logger = LoggerFactory.getLogger(this.getClass());

@@ -1,9 +1,12 @@
 package umc.week6.domain.member.application;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import io.jsonwebtoken.security.SecurityException;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import umc.week6.domain.member.domain.Member;
 import umc.week6.domain.member.domain.Token;
@@ -12,6 +15,7 @@ import java.security.Key;
 import java.util.Date;
 
 @Service
+@Slf4j
 public class CustomTokenProvider {
 
     private final String secretKey = "065AC75741559UCB88F87E5EF897A0FB182ZE2D040AA4CDE06FC6B32D2F859F4";
@@ -69,6 +73,41 @@ public class CustomTokenProvider {
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)
                 .build();
+    }
+
+    public Long getMemberIdFromToken(String token) {
+        Claims claims = Jwts.parserBuilder()
+                .setSigningKey(secretKey)
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+        return Long.parseLong(claims.getSubject());
+    }
+
+    public Long getExpiration(String token) {
+        Date expiration = Jwts.parserBuilder()
+                .setSigningKey(secretKey)
+                .build()
+                .parseClaimsJws(token)
+                .getBody().getExpiration();
+        long now = new Date().getTime();
+        return (expiration.getTime() - now);
+    }
+
+    public boolean validateToken(String token) {
+        try{
+            Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(token);
+            return true;
+        }catch (SecurityException | MalformedJwtException ex){
+            log.error("잘못된 JWT 서명입니다.");
+        } catch (ExpiredJwtException ex){
+            log.error("만료된 JWT 토큰입니다.");
+        }catch (UnsupportedJwtException ex){
+            log.error("지원되지 않는 JWT 토큰입니다.");
+        }catch (IllegalArgumentException ex){
+            log.error("JWT 토큰이 잘못되었습니다.");
+        }
+        return false;
     }
 
 

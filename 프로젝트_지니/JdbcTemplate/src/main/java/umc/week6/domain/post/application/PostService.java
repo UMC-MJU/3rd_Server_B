@@ -3,6 +3,7 @@ package umc.week6.domain.post.application;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import umc.week6.domain.post.domain.Post;
 import umc.week6.domain.post.domain.PostDao;
 import umc.week6.domain.post.dto.UpdatePostReq;
@@ -14,10 +15,12 @@ import umc.week6.global.payload.Message;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class PostService {
 
     private final PostDao postDao;
 
+    @Transactional
     public ResponseEntity<?> uploadPost(UploadPostReq uploadPostReq) {
         int postId = postDao.createPost(uploadPostReq);
 
@@ -32,6 +35,7 @@ public class PostService {
                 .build());
     }
 
+    @Transactional
     public ResponseEntity<?> updatePost(UpdatePostReq updatePostReq, Long id) {
         Post post = postDao.updatePost(updatePostReq, id);
 
@@ -50,6 +54,7 @@ public class PostService {
                 .build());
     }
 
+    @Transactional
     public ResponseEntity<?> deletePostById(Long id) {
         postDao.deletePostById(id);
 
