@@ -4,7 +4,6 @@ import com.umc.board_practice.dto.LoginDto;
 import com.umc.board_practice.dto.TokenDto;
 import com.umc.board_practice.dto.UserDto;
 import com.umc.board_practice.jwt.JwtFilter;
-import com.umc.board_practice.provider.UserProvider;
 import com.umc.board_practice.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -21,12 +20,9 @@ import javax.validation.Valid;
 public class UserController {
 
     private final UserService userService;
-    //private final UserProvider userProvider;
 
     @PostMapping("/board/signup")
-    public ResponseEntity<TokenDto> signup(
-            @Valid @RequestBody UserDto userDto
-    ) {
+    public ResponseEntity<TokenDto> signup(@Valid @RequestBody UserDto userDto) {
         UserDto savedUserDto = userService.signup(userDto);
         LoginDto loginDto = LoginDto.builder()
                 .name(savedUserDto.getName())
@@ -37,9 +33,7 @@ public class UserController {
     }
 
     @PostMapping("/board/login")
-    public ResponseEntity<TokenDto> login(
-            @Valid @RequestBody LoginDto loginDto
-    ) {
+    public ResponseEntity<TokenDto> login(@Valid @RequestBody LoginDto loginDto) {
         String jwt = userService.login(loginDto);
         return insertTokenInResponse(jwt);
     }
@@ -63,26 +57,4 @@ public class UserController {
     public ResponseEntity<UserDto> getUserInfo(@PathVariable String username) {
         return ResponseEntity.ok(userService.getUserWithAuthorities(username));
     }
-
-
-//    @GetMapping("/board/user/{password}")
-//    public UserDto findUserByPassword(@PathVariable String password) {
-//        return userProvider.findUserByPassword(password);
-//    }
-//
-//    @GetMapping("/board/user")
-//    public List<UserDto> findAllUser() {
-//        return userProvider.findAllUser();
-//    }
-//
-//    @PostMapping("/board/user/update/{password}")
-//    public UserDto updateUserByPassword(@PathVariable String password,
-//                                        @RequestBody UserDto userDto) {
-//        return userService.updateUserByPassword(password, userDto);
-//    }
-//
-//    @DeleteMapping("/board/user/delete/{password}")
-//    public void deleteUserByPassword(@PathVariable String password) {
-//        userService.deleteUserByPassword(password);
-//    }
 }

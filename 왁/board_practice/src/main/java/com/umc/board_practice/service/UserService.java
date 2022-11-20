@@ -79,19 +79,4 @@ public class UserService {
                 .toUserDto();
     }
 
-
-    public void deleteUserByPassword(String password) {
-        User findUser = userRepository.findByPassword(password);
-        userRepository.delete(findUser);
-    }
-
-    public UserDto updateUserByPassword(String password, UserDto userDto) {
-        User findUser = userRepository.findByPassword(password);
-        User updatedUser = findUser.updateUser(userDto.getName(), userDto.getPassword());
-        return UserDto.builder()
-                .name(updatedUser.getName())
-                .password(updatedUser.getPassword())
-                .build();
-    }
-
 }

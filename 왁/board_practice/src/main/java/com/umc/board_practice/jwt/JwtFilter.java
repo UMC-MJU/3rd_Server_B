@@ -1,5 +1,6 @@
 package com.umc.board_practice.jwt;
 
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
@@ -14,15 +15,16 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
+@RequiredArgsConstructor
 public class JwtFilter extends GenericFilterBean {
 
     private static final Logger logger = LoggerFactory.getLogger(JwtFilter.class);
     public static final String AUTHORIZATION_HEADER = "Authorization";
     private final JwtProvider jwtProvider;
 
-    public JwtFilter(JwtProvider tokenProvider) {
-        this.jwtProvider = tokenProvider;
-    }
+//    public JwtFilter(JwtProvider tokenProvider) {
+//        this.jwtProvider = tokenProvider;
+//    }
 
     //실제 필터링 역할, 토큰의 인증정보를 SecurityContext에 저장하는 역할 수행
     @Override
