@@ -1,12 +1,9 @@
 package com.umcspring.testserver.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
 @AllArgsConstructor   //@AllArgsConstructor => 모든 필드 값을 파라미터로 받는 생성자를 만듦.
 public class UserDto {
     private int idx;
