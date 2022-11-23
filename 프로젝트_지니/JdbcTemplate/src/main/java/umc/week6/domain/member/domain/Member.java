@@ -1,16 +1,21 @@
 package umc.week6.domain.member.domain;
 
+import lombok.Builder;
+import lombok.Data;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
 public class Member {
     private Long id;
     private String email;
     private String password;
     private String nickname;
+
+    @Builder
+    public Member(Long id, String email, String password, String nickname) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.nickname = nickname;
+    }
 }
