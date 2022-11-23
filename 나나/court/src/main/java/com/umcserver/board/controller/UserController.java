@@ -2,14 +2,21 @@ package com.umcserver.board.controller;
 
 import com.umcserver.board.dto.UserDTO;
 import com.umcserver.board.service.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("/users")
 public class UserController {
+    @GetMapping(value = "api/test")
+    public String test() {
+        return "hello~";
+    }
+
     @Autowired
     UserService userService;
 
