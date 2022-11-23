@@ -18,21 +18,21 @@ class UserServiceTest {
 
 
 
-    @Test
-    void signUp() {
-        UserDto myDto = UserDto.builder()
-                .name("wee")
-                .password("004637")
-                .build();
-        User newUser = User.createUser(myDto);
-        User savedUser = userRepository.save(newUser);
-        UserDto resultDto =  UserDto.builder()
-                .name(savedUser.getName())
-                .password(savedUser.getPassword())
-                .build();
-        Assertions.assertThat(myDto).isEqualTo(resultDto);
-        //Assertions.assertThat(resultDto).isNull();
-    }
+//    @Test
+//    void signUp() {
+//        UserDto myDto = UserDto.builder()
+//                .name("wee")
+//                .password("004637")
+//                .build();
+//        User newUser = User.createUser(myDto);
+//        User savedUser = userRepository.save(newUser);
+//        UserDto resultDto =  UserDto.builder()
+//                .name(savedUser.getName())
+//                .password(savedUser.getPassword())
+//                .build();
+//        Assertions.assertThat(myDto).isEqualTo(resultDto);
+//        //Assertions.assertThat(resultDto).isNull();
+//    }
 
     @Test
     void findUserByPassword() {
