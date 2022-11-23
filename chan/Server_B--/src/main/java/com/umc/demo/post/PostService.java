@@ -1,5 +1,6 @@
 package com.umc.demo.post;
 
+import com.umc.demo.config.BaseException;
 import com.umc.demo.post.dto.PostDto;
 import com.umc.demo.post.dto.UpdateDto;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,7 @@ public class PostService {
 
     private final PostRepository postRepository;
 
-    public Optional<Post> getPostById(int post_id) {
+    public Optional<Post> getPostById(int post_id) throws BaseException {
         return postRepository.findById(post_id);
     }
 
@@ -28,6 +29,7 @@ public class PostService {
         return postRepository.findByUserId(user_id);
     }
 
+    // 포스트 업로드
     public Post postPost(PostDto postDto) {
 
         Post post = Post.builder()
@@ -44,6 +46,7 @@ public class PostService {
         return postRepository.save(post);
     }
 
+    // 포스트 업데이트
     public Optional<Post> updatePost(int post_id, UpdateDto updateDto) {
         Optional<Post> post = postRepository.findById(post_id);
         post.ifPresent(selectedPost -> {
@@ -54,7 +57,13 @@ public class PostService {
         return post;
     }
 
+    // 포스트 수정
     public void deletePost(int post_id) {
         postRepository.deleteById(post_id);
     }
+
+//    public Page<Post> search(String text, Pageable pageable) {
+//        Page<Post> postsList = postRepository.findByText(text, pageable);
+//        return postsList;
+//    }
 }
