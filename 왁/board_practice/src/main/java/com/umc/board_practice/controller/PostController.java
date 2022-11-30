@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class PostController {
+    //기본적인 CRUD
 
     private final PostService postService;
     private final PostProvider postProvider;
